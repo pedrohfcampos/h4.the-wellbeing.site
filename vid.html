@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Space Age Verification</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
+   
+    <style>
+    body {
+        font-family: 'Montserrat', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        background-color: #FFFFFF; /* White background for a clean look */
+        padding: 20px;
+        text-align: center;
+        box-sizing: border-box;
+        color: #333; /* Dark gray for text */
+    }
+
+    h1, p, .timer, .time, .btn, footer, .footer-link a {
+        font-weight: 700;
+    }
+
+    h1 {
+        color: #3F51B5; /* Indigo color for the header */
+        font-size: 3.5em;
+    }
+
+    p {
+        font-size: 1.5em; /* Slightly smaller font size */
+        margin: 10px 0;
+        color: #555; /* Medium gray for body text */
+    }
+
+    .timer {
+        font-size: 2em;
+        margin: 20px 0;
+        color: #666; /* Soft gray for the timer */
+    }
+
+    .time {
+        color: #666; /* Matching the timer color */
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 1.6em; /* Slightly smaller font size */
+        color: #FFF; /* White text for high contrast */
+        background-color: #3F51B5; /* Indigo for buttons */
+        text-align: center;
+        text-decoration: none;
+        border-radius: 12px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    .btn:hover {
+        background-color: #5C6BC0; /* Lighter shade of indigo for hover */
+    }
+
+    footer {
+        width: 100%;
+        background-color: #E0E0E0; /* Light gray for footer */
+        color: #333; /* Dark gray for footer text */
+        padding: 20px;
+        box-sizing: border-box;
+        display: none;
+    }
+
+    .footer-link a {
+        color: #555; /* Medium gray for links */
+        text-decoration: none;
+    }
+    </style>
+</head>
+<body>
+    <h1>Age Check</h1>
+    <p>Please verify your age to proceed.</p>
+    <div class="timer">
+        Time left: <span class="time" id="time">0:15</span>
+    </div>
+    <a href="https://wr.thewell-being.online/s4r0onsm8c/" class="btn" id="proceedButton">Continue</a>
+
+    <footer id="footer">
+        <div class="footer-link">
+            <a href="https://page1.thegoodhealht.online/privacy-policy/">Privacy Policy</a> |
+            <a href="https://page1.thegoodhealht.online/terms/">Terms of Service</a> |
+            <a href="https://page1.thegoodhealht.online/contact/">Contact Us</a>
+        </div>
+    </footer>
+
+    <script>
+        var time = 15;
+        var timerElement = document.getElementById('time');
+        var interval = setInterval(function() {
+            var minutes = Math.floor(time / 60);
+            var seconds = time % 60;
+            timerElement.textContent = minutes + ':' + (seconds < 10 ? '0' + seconds : seconds);
+            time--;
+
+            if (time < 0) {
+                clearInterval(interval);
+                timerElement.textContent = "Time Expired";
+                timerElement.style.color = "#FF1744"; /* Red alert for expiration */
+            }
+        }, 1000);
+
+        setTimeout(() => {
+            document.getElementById('footer').style.display = 'block';
+        }, 1800000); // Delay footer visibility for 30 minutes
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var proceedButton = document.getElementById('proceedButton');
+            if (!proceedButton) {
+                console.error('Button not found in the document .');
+                return;
+            }
+
+            if (urlParams.toString() === "") {
+                console.error('No parameters were passed to the page.');
+                // Here you can choose to redirect to an error page or display a message
+                return;
+            }
+
+            var baseUrl = proceedButton.href;
+            baseUrl += baseUrl.includes('?') ? '&' : '?';
+            urlParams.forEach(function(value, key) {
+                baseUrl += encodeURIComponent(key) + '=' + encodeURIComponent(value) + '&';
+            });
+            baseUrl = baseUrl.slice(0, -1);
+            proceedButton.href = baseUrl;
+            console.log("Final button URL:", proceedButton.href);
+        });
+    </script>
+</body>
+</html>
